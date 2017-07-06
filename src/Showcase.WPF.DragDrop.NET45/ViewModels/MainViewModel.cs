@@ -6,6 +6,9 @@ using Showcase.WPF.DragDrop.Models;
 
 namespace Showcase.WPF.DragDrop.ViewModels
 {
+  using System.Windows;
+  using GongSolutions.Wpf.DragDrop;
+
   public class MainViewModel : ViewModelBase
   {
     private SampleData _data;
@@ -89,6 +92,28 @@ namespace Showcase.WPF.DragDrop.ViewModels
         _filterCollectionCommand = value;
         OnPropertyChanged();
       }
+    }
+
+    public object DropHandler
+    {
+      get { return new NestedDropHandler(); }
+    }
+  }
+
+  public class NestedDropHandler : IDropTarget
+  {
+    public void DragOver(IDropInfo dropInfo)
+    {
+      if (dropInfo.TargetItem != null &&
+          dropInfo.TargetItem.ToString().StartsWith("Root", StringComparison.OrdinalIgnoreCase))
+      {
+        dropInfo.Effects = DragDropEffects.Move;
+        dropInfo.DropTargetAdorner = DropTargetAdorners.Highlight;
+      }
+    }
+
+    public void Drop(IDropInfo dropInfo)
+    {
     }
   }
 }
