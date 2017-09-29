@@ -159,7 +159,7 @@ namespace GongSolutions.Wpf.DragDrop
               if (tvItem != null)
               {
                 this.TargetCollection = tvItem.ItemsSource ?? tvItem.Items;
-                this.InsertIndex = this.TargetCollection != null ? this.TargetCollection.OfType<object>().Count() : 0;
+                //this.InsertIndex = this.TargetCollection != null ? this.TargetCollection.OfType<object>().Count() : 0;
               }
               this.InsertPosition |= RelativeInsertPosition.TargetItemCenter;
             }
