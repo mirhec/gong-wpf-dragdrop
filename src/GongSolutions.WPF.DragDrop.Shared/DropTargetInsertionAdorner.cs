@@ -75,7 +75,7 @@ namespace GongSolutions.Wpf.DragDrop
         if (itemContainer != null)
         {
           var transPoint = itemContainer.TranslatePoint(new Point(), this.AdornedElement);
-          if (visualTargetItem is TreeViewItem item)
+          if (dropInfo.TargetItem is TreeViewItem item)
             transPoint = item.TranslatePoint(new Point(), this.AdornedElement);
           var itemRect = new Rect(transPoint, itemContainer.RenderSize);
           Point point1,
